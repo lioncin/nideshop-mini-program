@@ -4,116 +4,143 @@ const user = require('../../../services/user.js');
 const app = getApp();
 
 Page({
-  data: {
-    userInfo: {},
-    showLoginDialog: false
-  },
-  onLoad: function(options) {
-    // 页面初始化 options为页面跳转所带来的参数
-  },
-  onReady: function() {
-
-  },
-  onShow: function() {
-    this.setData({
-      userInfo: app.globalData.userInfo,
-    });
-  },
-  onHide: function() {
-    // 页面隐藏
-
-  },
-  onUnload: function() {
-    // 页面关闭
-  },
-
-  onUserInfoClick: function() {
-    if (wx.getStorageSync('token')) {
-
-    } else {
-      this.showLoginDialog();
-    }
-  },
-
-  showLoginDialog() {
-    this.setData({
-      showLoginDialog: true
-    })
-  },
-
-  onCloseLoginDialog () {
-    this.setData({
-      showLoginDialog: false
-    })
-  },
-
-  onDialogBody () {
-    // 阻止冒泡
-  },
-
-  onWechatLogin(e) {
-    if (e.detail.errMsg !== 'getUserInfo:ok') {
-      if (e.detail.errMsg === 'getUserInfo:fail auth deny') {
-        return false
-      }
-      wx.showToast({
-        title: '微信登录失败',
-      })
-      return false
-    }
-    util.login().then((res) => {
-      return util.request(api.AuthLoginByWeixin, {
-        code: res,
-        userInfo: e.detail
-      }, 'POST');
-    }).then((res) => {
-      console.log(res)
-      if (res.errno !== 0) {
-        wx.showToast({
-          title: '微信登录失败',
-        })
-        return false;
-      }
-      // 设置用户信息
-      this.setData({
-        userInfo: res.data.userInfo,
+    data: {
+        userInfo: {},
         showLoginDialog: false
-      });
-      app.globalData.userInfo = res.data.userInfo;
-      app.globalData.token = res.data.token;
-      wx.setStorageSync('userInfo', JSON.stringify(res.data.userInfo));
-      wx.setStorageSync('token', res.data.token);
-    }).catch((err) => {
-      console.log(err)
-    })
-  },
+    },
+    onLoad: function(options) {
+        // 页面初始化 options为页面跳转所带来的参数
+    },
+    onReady: function() {
 
-  onOrderInfoClick: function(event) {
-    wx.navigateTo({
-      url: '/pages/ucenter/order/order',
-    })
-  },
+    },
+    onShow: function() {
+        this.setData({
+            userInfo: app.globalData.userInfo,
+        });
+    },
+    onHide: function() {
+        // 页面隐藏
 
-  onSectionItemClick: function(event) {
+    },
+    onUnload: function() {
+        // 页面关闭
+    },
 
-  },
+    onUserInfoClick: function() {
+        let that = this;
+        wx.showModal({
+            title: '授权提示',
+            content: '为了提供更好的服务，我们需要获取您的手机号码。是否同意授权？',
+            success: function (res) {
+                if (res.confirm) {
+                    wx.login({
+                        success: function (res) {
+                            if(res.errMsg=='login:ok'){
+                                const code = res.code;
+                                console.log(res);
+                                wx.request({
+                                    url: 'http://localhost:3000/getPhoneNumber',
+                                    method: 'POST',
+                                    data: {
+                                      code: code
+                                    },
+                                    success: function (response) {
+                                      console.log(response.data);
+                                      // 在这里处理服务器返回的数据
+                                    },
+                                    fail: function (error) {
+                                      console.error('Request failed:', error);
+                                      // 在这里处理请求失败的情况
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    },
 
-  // TODO 移到个人信息页面
-  exitLogin: function() {
-    wx.showModal({
-      title: '',
-      confirmColor: '#b4282d',
-      content: '退出登录？',
-      success: function(res) {
-        if (res.confirm) {
-          wx.removeStorageSync('token');
-          wx.removeStorageSync('userInfo');
-          wx.switchTab({
-            url: '/pages/index/index'
-          });
+    showLoginDialog() {
+        this.setData({
+            showLoginDialog: true
+        })
+    },
+
+    onCloseLoginDialog () {
+        this.setData({
+            showLoginDialog: false
+        })
+    },
+
+    onDialogBody () {
+        // 阻止冒泡
+    },
+
+    onWechatLogin(e) {
+        if (e.detail.errMsg !== 'getUserInfo:ok') {
+            if (e.detail.errMsg === 'getUserInfo:fail auth deny') {
+                return false
+            }
+            wx.showToast({
+                title: '微信登录失败',
+            })
+        return false
         }
-      }
-    })
+        util.login().then((res) => {
+            return util.request(api.AuthLoginByWeixin, {
+                code: res,
+                userInfo: e.detail
+            }, 'POST');
+        }).then((res) => {
+            console.log(res)
+            if (res.errno !== 0) {
+                wx.showToast({
+                    title: '微信登录失败',
+                })
+                return false;
+            }
+            // 设置用户信息
+            this.setData({
+                userInfo: res.data.userInfo,
+                showLoginDialog: false
+            });
+            app.globalData.userInfo = res.data.userInfo;
+            app.globalData.token = res.data.token;
+            wx.setStorageSync('userInfo', JSON.stringify(res.data.userInfo));
+            wx.setStorageSync('token', res.data.token);
+        }).catch((err) => {
+            console.log(err)
+        })
+    },
 
-  }
+    onOrderInfoClick: function(event) {
+        wx.navigateTo({
+            url: '/pages/ucenter/order/order',
+        })
+    },
+
+    onSectionItemClick: function(event) {
+
+    },
+
+    // TODO 移到个人信息页面
+    exitLogin: function() {
+        wx.showModal({
+            title: '',
+            confirmColor: '#b4282d',
+            content: '退出登录？',
+            success: function(res) {
+                if (res.confirm) {
+                    wx.removeStorageSync('token');
+                    wx.removeStorageSync('userInfo');
+                    wx.switchTab({
+                        url: '/pages/index/index'
+                    });
+                }
+            }
+        })
+
+    }
 })
