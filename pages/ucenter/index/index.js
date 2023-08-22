@@ -38,9 +38,8 @@ Page({
                         success: function (res) {
                             if(res.errMsg=='login:ok'){
                                 const code = res.code;
-                                // console.log(res);
                                 wx.request({
-                                    url: 'http://localhost:3000/getPhoneNumber',
+                                    url: api.getPhoneNumber,
                                     method: 'POST',
                                     data: {
                                         code: code

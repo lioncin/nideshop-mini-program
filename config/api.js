@@ -1,5 +1,7 @@
 const ApiRootUrl = 'http://127.0.0.1:8360/api/';
 // const ApiRootUrl = 'https://wentb.cn/';
+// const getPhoneNumber = 'http://localhost:3000/getPhoneNumber';
+const getPhoneNumber = 'https://wentb.cn:3000/getPhoneNumber';
 
 module.exports = {
     IndexUrl: ApiRootUrl + 'index/index', //首页数据接口
@@ -60,4 +62,6 @@ module.exports = {
 
     FootprintList: ApiRootUrl + 'footprint/list',  //足迹列表
     FootprintDelete: ApiRootUrl + 'footprint/delete',  //删除足迹
+
+	getPhoneNumber: getPhoneNumber,  //获取手机号
 };
