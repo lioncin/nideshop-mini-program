@@ -31,27 +31,60 @@ Page({
         let that = this;
         wx.showModal({
             title: '授权提示',
-            content: '为了提供更好的服务，我们需要获取您的手机号码。是否同意授权？',
+            content: '为了提供更好的服务，我们需要获取您的信息。是否同意授权？',
             success: function (res) {
                 if (res.confirm) {
                     wx.login({
                         success: function (res) {
                             if(res.errMsg=='login:ok'){
                                 const code = res.code;
-                                console.log(res);
+                                // console.log(res);
                                 wx.request({
                                     url: 'http://localhost:3000/getPhoneNumber',
                                     method: 'POST',
                                     data: {
-                                      code: code
+                                        code: code
                                     },
                                     success: function (response) {
-                                      console.log(response.data);
-                                      // 在这里处理服务器返回的数据
+                                        const msg = response.data.message;
+                                        const openId = msg.openid;
+                                        const userInfo = {
+                                            openId:openId,
+                                            nickName:'微信用户'
+                                        };
+                                        console.log(userInfo);
+                                        wx.request({
+                                            url: api.AuthLoginByWeixin,
+                                            method: 'POST',
+                                            data: {
+                                                code: code,
+                                                userInfo: userInfo
+                                            },
+                                            header: {
+                                                'content-type': 'application/json'
+                                            },
+                                            success: function(res) {
+                                                const data = res.data.data;
+                                                const token = data.token;
+                                                const userInfo2 = data.userInfo;
+                                                // 在请求成功时执行的操作
+                                                that.setData({
+                                                    userInfo: userInfo2
+                                                });
+                                                app.globalData.userInfo = userInfo2;
+                                                app.globalData.token = token;
+                                                wx.setStorageSync('userInfo', JSON.stringify(userInfo2));
+                                                wx.setStorageSync('token', token);
+                                            },
+                                            fail: function(error) {
+                                                console.log(error);
+                                              // 在请求失败时执行的操作
+                                            }
+                                        });
                                     },
                                     fail: function (error) {
-                                      console.error('Request failed:', error);
-                                      // 在这里处理请求失败的情况
+                                        console.error('Request failed:', error);
+                                        // 在这里处理请求失败的情况
                                     }
                                 });
                             }
@@ -79,22 +112,12 @@ Page({
     },
 
     onWechatLogin(e) {
-        if (e.detail.errMsg !== 'getUserInfo:ok') {
-            if (e.detail.errMsg === 'getUserInfo:fail auth deny') {
-                return false
-            }
-            wx.showToast({
-                title: '微信登录失败',
-            })
-        return false
-        }
         util.login().then((res) => {
             return util.request(api.AuthLoginByWeixin, {
                 code: res,
                 userInfo: e.detail
             }, 'POST');
         }).then((res) => {
-            console.log(res)
             if (res.errno !== 0) {
                 wx.showToast({
                     title: '微信登录失败',
