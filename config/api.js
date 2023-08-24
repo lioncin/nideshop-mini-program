@@ -52,6 +52,7 @@ module.exports = {
     AddressDetail: ApiRootUrl + 'address/detail',  //收货地址详情
     AddressSave: ApiRootUrl + 'address/save',  //保存收货地址
     AddressDelete: ApiRootUrl + 'address/delete',  //保存收货地址
+	AddressUserInfo: ApiRootUrl + 'address/user',  //保存收货地址
 
     RegionList: ApiRootUrl + 'region/list',  //获取区域列表
 
