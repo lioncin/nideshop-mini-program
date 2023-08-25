@@ -15,13 +15,13 @@
             </navigator>
         </view>
         <view class="item">
-            <navigator url="/pages/ucenter/coupon/coupon" class="a">
+			<navigator url="#" class="a">
                 <text class="icon coupon"></text>
                 <text class="txt">优惠券</text>
             </navigator>
         </view>
         <view class="item no-border">
-            <navigator url="url" class="a">
+            <navigator url="#" class="a">
                 <text class="icon gift"></text>
                 <text class="txt">礼品卡</text>
             </navigator>
@@ -39,7 +39,7 @@
             </navigator>
         </view>
         <view class="item no-border">
-            <navigator url="url" class="a">
+            <navigator url="#" class="a">
                 <text class="icon kefu"></text>
                 <text class="txt">会员福利</text>
             </navigator>
@@ -63,7 +63,7 @@
             </navigator>
         </view>
         <view class="item item-bottom">
-            <navigator url="url" class="a">
+            <navigator url="#" class="a">
                 <text class="icon help"></text>
                 <text class="txt">帮助中心</text>
             </navigator>
