@@ -1,7 +1,7 @@
-const ApiRootUrl = 'http://127.0.0.1:8360/api/';
-// const ApiRootUrl = 'https://wentb.cn/';
+// const ApiRootUrl = 'http://127.0.0.1:8360/api/';
+const ApiRootUrl = 'https://api.wentb.cn/';
 // const getPhoneNumber = 'http://localhost:3000/getPhoneNumber';
-const getPhoneNumber = 'https://wentb.cn:3000/getPhoneNumber';
+const getPhoneNumber = 'https://jiema.wentb.cn/getPhoneNumber';
 
 module.exports = {
     IndexUrl: ApiRootUrl + 'index/index', //首页数据接口
