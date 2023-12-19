@@ -31,9 +31,6 @@
           <view class="wrap">
             <image class="img" src="{{item.new_pic_url}}" mode="aspectFill"></image>
             <view class="mt">
-              <text class="brand">{{item.name}}</text>
-              <text class="price">{{item.floor_price}}</text>
-              <text class="unit">元起</text>
             </view>
           </view>
         </navigator>
@@ -44,7 +41,7 @@
     <view class="h">
       <view>
         <navigator url="../newGoods/newGoods">
-          <text class="txt">周一周四 · 新品首发</text>
+          <text class="txt">新品首发</text>
         </navigator>
       </view>
     </view>

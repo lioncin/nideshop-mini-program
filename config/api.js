@@ -1,5 +1,5 @@
 // const ApiRootUrl = 'http://127.0.0.1:8360/api/';
-const ApiRootUrl = 'https://jiaoli.cloud/api/';
+const ApiRootUrl = 'https://www.mengpaifang.com/';
 // const getPhoneNumber = 'http://localhost:3000/getPhoneNumber';
 const getPhoneNumber = 'https://jiema.wentb.cn/getPhoneNumber';
 

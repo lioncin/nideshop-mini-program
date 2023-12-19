@@ -37,7 +37,7 @@
     "window": {
         "backgroundTextStyle": "dark",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "严选",
+        "navigationBarTitleText": "企福采供应链",
         "navigationBarTextStyle": "black",
         "enablePullDownRefresh": true
     },
