@@ -62,21 +62,21 @@ Page({
 
 		if (!this.data.isEditCart) {
 			util.request(api.CartChecked, { productIds: that.data.cartGoods[itemIndex].product_id, isChecked: that.data.cartGoods[itemIndex].checked ? 0 : 1 }, 'POST').then(function (res) {
-			if (res.errno === 0) {
-				that.setData({
-					cartGoods: res.data.cartList,
-					cartTotal: res.data.cartTotal
-				});
-			}
+				if (res.errno === 0) {
+					that.setData({
+						cartGoods: res.data.cartList,
+						cartTotal: res.data.cartTotal
+					});
+				}
 
-			that.setData({
-				checkedAllStatus: that.isCheckedAll()
+				that.setData({
+					checkedAllStatus: that.isCheckedAll()
+				});
 			});
-		});
 		} else {
 			//编辑状态
 			let tmpCartData = this.data.cartGoods.map(function (element, index, array) {
-				if (index == itemIndex){
+				if (index == itemIndex) {
 					element.checked = !element.checked;
 				}
 
@@ -90,7 +90,7 @@ Page({
 			});
 		}
 	},
-	getCheckedGoodsCount: function(){
+	getCheckedGoodsCount: function () {
 		let checkedGoodsCount = 0;
 		this.data.cartGoods.forEach(function (v) {
 			if (v.checked === true) {
@@ -119,7 +119,7 @@ Page({
 				});
 			});
 		} else {
-		//编辑状态
+			//编辑状态
 			let checkedAllStatus = that.isCheckedAll();
 			let tmpCartData = this.data.cartGoods.map(function (v) {
 				v.checked = !checkedAllStatus;
@@ -167,8 +167,8 @@ Page({
 		}, 'POST').then(function (res) {
 			if (res.errno === 0) {
 				that.setData({
-				//cartGoods: res.data.cartList,
-				//cartTotal: res.data.cartTotal
+					//cartGoods: res.data.cartList,
+					//cartTotal: res.data.cartTotal
 				});
 			}
 			that.setData({
@@ -204,14 +204,14 @@ Page({
 				content: '请先登录',
 				success: function (res) {
 					if (res.confirm) {
-						wx.redirectTo({
+						wx.switchTab({
 							url: '/pages/ucenter/index/index'
-						});
+						})
 					} else if (res.cancel) {
 					}
 				}
 			})
-		}else{
+		} else {
 			//获取已选择的商品
 			let that = this;
 			var checkedGoods = this.data.cartGoods.filter(function (element, index, array) {
