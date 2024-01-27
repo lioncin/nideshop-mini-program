@@ -10,7 +10,6 @@ Page({
     newGoods: [],
     hotGoods: [],
     topics: [],
-    brands: [],
     floorGoods: [],
     banner: [],
     channel: [],
@@ -21,50 +20,81 @@ Page({
     interval: 3000,
     circular: true,
     imageList: [
-      { src: 'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/1.png' },
-      { src: 'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/2.png' },
-      { src: 'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/3.png' }
+      { src: 'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/SAD1.png' },
+      { src: 'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/SAD2.png' },
+      { src: 'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/SAD3.png' }
     ],
 
-    cagetory: ["年货节","女神精选","开门红","促销礼赠","伴手礼盒","商务套装","阳光慧采","代发专区","暖冬好物","国铁商城"],
+    cagetory: [{
+      "id":"1","name":"年货节","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon1.png"
+    },{
+      "id":"2","name":"女神精选","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon2.png"
+    },{
+      "id":"3","name":"开门红","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon3.png"
+    },{
+      "id":"4","name":"促销礼赠","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon4.png"
+    },{
+      "id":"5","name":"伴手礼盒","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon5.png"
+    },{
+      "id":"6","name":"商务套装","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon6.png"
+    },{
+      "id":"7","name":"阳光慧采","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon7.png"
+    },{
+      "id":"8","name":"代发专区","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon8.png"
+    },{
+      "id":"9","name":"暖冬好物","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon9.png"
+    },{
+      "id":"10","name":"国铁商城","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon10.png"
+    }],
 
     priceOptions:['1-20','20-40','40-60','60-80','80-100','100-200','200-500','500-800','800-1000','1000-1500','1500-2000','>2000'],
+    brandList:[
+      {
+        "id":1,"name":"xxxx","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/TBRAND1.png"
+      },
+      {
+        "id":2,"name":"xxxx","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/TBRAND2.png"
+      },
+      {
+        "id":3,"name":"xxxx","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/TBRAND3.png"
+      }
+    ],
     brands:[{
       "id":1,
       "name":"中粮",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/daishen.png"
+      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand7.png"
     },{
       "id":2,
       "name":"臻味",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/daishen.png"
+      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand8.png"
     },{
       "id":3,
       "name":"笨笨马",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/daishen.png"
+      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand9.png"
     },{
       "id":4,
       "name":"卓朗",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/daishen.png"
+      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand4.png"
     },{
       "id":5,
       "name":"西屋",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/daishen.png"
+      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand5.png"
     },{
       "id":6,
       "name":"九阳",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/daishen.png"
+      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand6.png"
     },{
       "id":7,
       "name":"戴森",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/daishen.png"
+      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand3.png"
     },{
       "id":8,
-      "name":"飞利浦",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/daishen.png"
+      "name":"膳魔师",
+      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand2.png"
     },{
       "id":9,
-      "name":"中粮",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/daishen.png"
+      "name":"飞利浦",
+      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand1.png"
     }],
     searchPrice1:0,
     searchPrice2:0,

@@ -11,7 +11,7 @@
     <view class="ad">
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}">
         <swiper-item wx:for="{{imageList}}" wx:key="*this">
-          <image src="{{item.src}}" mode="aspectFill" bindtap="handleImageTap"></image>
+          <image src="{{item.src}}" bindtap="handleImageTap"></image>
         </swiper-item>
       </swiper>
     </view>
@@ -26,8 +26,8 @@
     </view>
     <view class="category">
       <view wx:for="{{cagetory}}" wx:key="index" class="item" data-index="{{index}}">
-        <image src="https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/fenleiicon.png" mode=""/>
-        <view class="name">{{item}}</view>
+        <image src="{{item.url}}" />
+        <view class="name">{{item.name}}</view>
       </view>
     </view>
     <view class="price">
@@ -45,21 +45,20 @@
     </view>
     <view class="ad">
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}">
-        <swiper-item wx:for="{{imageList}}" wx:key="*this">
-          <image src="{{item.src}}" mode="aspectFill" bindtap="handleImageTap"></image>
+        <swiper-item wx:for="{{brandList}}" wx:key="*this">
+          <image src="{{item.url}}" mode="aspectFill" ></image>
         </swiper-item>
       </swiper>
     </view>
     <view class="brand">
       <view wx:for="{{brands}}" wx:key="index" class="item" data-index="{{index}}">
         <image src="{{item.url}}" mode="aspectFit" class="brand-image" />
-        <view class="name">{{item.name}}</view>
       </view>
     </view>
     <view class="goods">
       <view wx:for="{{goods}}" wx:key="index" class="item" data-index="{{index}}">
         <view class="cover">
-          <image src="{{item.url}}" mode="aspectFit" />
+          <image src="{{item.url}}" />
         </view>
         <view class="info">
           <view wx:for="{{item.subItems}}" wx:key="subIndex" wx:for-item="subItem" class="subitem">
