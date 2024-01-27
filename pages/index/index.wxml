@@ -1,120 +1,74 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="search">
-    <navigator url="/pages/search/search" class="input">
-      <image class="icon"></image>
-      <text class="txt">商品搜索, 共{{goodsCount}}款好物</text>
-    </navigator>
-  </view>
-  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
-    <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
-      <navigator url="{{item.link}}">
-        <image src="{{item.image_url}}" background-size="cover"></image>
-      </navigator>
-    </swiper-item>
-  </swiper>
-  <view class="m-menu">
-    <navigator class="item" url="{{item.url}}" wx:for="{{channel}}" wx:key="{{item.id}}">
-      <image src="{{item.icon_url}}" background-size="cover"></image>
-      <text>{{item.name}}</text>
-    </navigator>
-  </view>
-  <view class="a-section a-brand">
-    <view class="h">
-      <navigator url="../brand/brand">
-        <text class="txt">品牌制造商直供</text>
-      </navigator>
-    </view>
-    <view class="b">
-      <view class="item item-1" wx:for="{{brand}}" wx:key="item.id">
-        <navigator url="/pages/brandDetail/brandDetail?id={{item.id}}">
-          <view class="wrap">
-            <image class="img" src="{{item.new_pic_url}}" mode="aspectFill"></image>
-            <view class="mt">
-            </view>
-          </view>
-        </navigator>
-      </view>
-    </view>
-  </view>
-  <view class="a-section a-new" wx:if="{{newGoods.length > 0}}">
-    <view class="h">
-      <view>
-        <navigator url="../newGoods/newGoods">
-          <text class="txt">新品首发</text>
-        </navigator>
-      </view>
-    </view>
-    <view class="b">
-      <view class="item" wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
-        <navigator url="../goods/goods?id={{item.id}}">
-          <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image>
-          <text class="name">{{item.name}}</text>
-          <text class="price">￥{{item.retail_price}}</text>
-        </navigator>
-      </view>
-    </view>
-  </view>
-  <view class="a-section a-popular" wx:if="{{hotGoods.length > 0}}">
-    <view class="h">
-      <view>
-        <navigator url="../hotGoods/hotGoods">
-          <text class="txt">人气推荐</text>
-        </navigator>
-      </view>
-    </view>
-    <view class="b">
-      <view class="item" wx:for="{{hotGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
-        <navigator url="/pages/goods/goods?id={{item.id}}">
-          <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image>
-          <view class="right">
-            <view class="text">
-              <text class="name">{{item.name}}</text>
-              <text class="desc">{{item.goods_brief}}</text>
-              <text class="price">￥{{item.retail_price}}</text>
-            </view>
-          </view>
-        </navigator>
-      </view>
-    </view>
-  </view>
-  <view class="a-section a-topic" wx:if="topics.length > 0">
-    <view class="h">
-      <view>
-        <navigator url="../topic/topic" open-type="switchTab">
-          <text class="txt">专题精选</text>
-        </navigator>
-      </view>
-    </view>
-    <view class="b">
-      <scroll-view scroll-x="true" class="list">
-        <view class="item" wx:for="{{topics}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
-          <navigator url="../topicDetail/topicDetail?id={{item.id}}">
-            <image class="img" src="{{item.scene_pic_url}}" background-size="cover"></image>
-            <view class="np">
-              <text class="name">{{item.title}}</text>
-              <text class="price">￥{{item.price_info}}元起</text>
-            </view>
-            <text class="desc">{{item.subtitle}}</text>
-          </navigator>
+<view class="home">
+  <view class="container">
+    <view class="search">
+      <input bindinput="onInput" placeholder="请输入商品名词，品牌，型号" />
+      <view class="fenlei">
+        <view wx:for="{{fenlei}}" wx:key="index" class="item" bindtap="onCategoryClick" data-index="{{index}}">
+          {{item}}
         </view>
-      </scroll-view>
-    </view>
-  </view>
-  <view class="good-grid" wx:for="{{floorGoods}}" wx:key="{{item.id}}">
-    <view class="h">
-      <view>
-        <text>{{item.name}}</text>
       </view>
     </view>
-    <view class="b">
-      <block wx:for="{{item.goodsList}}" wx:for-index="iindex" wx:for-item="iitem" wx:key="{{iitem.id}}">
-        <navigator url="../goods/goods?id={{iitem.id}}" class="item">
-          <image class="img" src="{{iitem.list_pic_url}}" background-size="cover"></image>
-          <view class="name">{{iitem.name}}</view>
-          <view class="price">￥{{iitem.retail_price}}</view>
-        </navigator>
-      </block>
+    <view class="ad">
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}">
+        <swiper-item wx:for="{{imageList}}" wx:key="*this">
+          <image src="{{item.src}}" mode="aspectFill" bindtap="handleImageTap"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="ContactUs">
+      <view class="left">
+        <image src="https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2021%2F1220%2F8dd34787j00r4er6k0011c000go00b4g.jpg&thumbnail=660x2147483647&quality=80&type=jpg"></image>
+      </view>
+      <view class="right">
+        <view class="title large">企福采供应链管理（苏州）有限公司</view>
+        <view class="title">苏州高新区狮山路35号1幢1006-065</view>
+      </view>
+    </view>
+    <view class="category">
+      <view wx:for="{{cagetory}}" wx:key="index" class="item" data-index="{{index}}">
+        <image src="https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/fenleiicon.png" mode=""/>
+        <view class="name">{{item}}</view>
+      </view>
+    </view>
+    <view class="price">
+      <view class="pricet">
+        <view class="title">价格筛选</view>
+        <view class="priceinput"><input bindinput="onInputPrice1" /></view>~
+        <view class="priceinput"><input bindinput="onInputPrice2" /></view>
+        <view class="btn">搜索</view>
+      </view>
+      <view class="pricebtn">
+        <view wx:for="{{priceOptions}}" wx:key="index" class="item" data-index="{{index}}">
+        <view class="name">{{item}}</view>
+      </view>
+      </view>
+    </view>
+    <view class="ad">
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}">
+        <swiper-item wx:for="{{imageList}}" wx:key="*this">
+          <image src="{{item.src}}" mode="aspectFill" bindtap="handleImageTap"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="brand">
+      <view wx:for="{{brands}}" wx:key="index" class="item" data-index="{{index}}">
+        <image src="{{item.url}}" mode="aspectFit" class="brand-image" />
+        <view class="name">{{item.name}}</view>
+      </view>
+    </view>
+    <view class="goods">
+      <view wx:for="{{goods}}" wx:key="index" class="item" data-index="{{index}}">
+        <view class="cover">
+          <image src="{{item.url}}" mode="aspectFit" />
+        </view>
+        <view class="info">
+          <view wx:for="{{item.subItems}}" wx:key="subIndex" wx:for-item="subItem" class="subitem">
+            <image src="{{subItem.url}}" />
+            <view class="name">{{subItem.name}}</view>
+            <view class="price">{{subItem.price}}</view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
