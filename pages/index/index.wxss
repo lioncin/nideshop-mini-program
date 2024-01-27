@@ -205,3 +205,9 @@
 .goods .item .info .subitem .price {
   color: red;
 }
+
+.goods .item .info .subitem .name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

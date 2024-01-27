@@ -99,35 +99,41 @@ Page({
     searchPrice1:0,
     searchPrice2:0,
     goods:[{
-      "id":1,
-      "name":"AAA",
+      "id":0,
       "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/nuandong.png',
-      "subItems":[{
-        "id":11,
-        "name":"AAA",
-        "price":100,
-        "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/boluodihai/4.%E6%B3%A2%E7%BD%97%E7%9A%84%E6%B5%B7/24.%E6%B3%A2%E7%BD%97%E5%95%A4%E9%85%92%E8%AF%A6%E6%83%85%E5%9B%BE/1.%E6%8D%B7%E5%85%8B%E7%86%8A%EF%BC%88%E6%9C%AA%E8%BF%87%E6%BB%A4%EF%BC%89%E9%B2%9C%E5%95%A4%E9%85%92%20%20%201.35l/1.jpg'
-      },{
-        "id":12,
-        "name":"AAA",
-        "price":100,
-        "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/boluodihai/4.%E6%B3%A2%E7%BD%97%E7%9A%84%E6%B5%B7/24.%E6%B3%A2%E7%BD%97%E5%95%A4%E9%85%92%E8%AF%A6%E6%83%85%E5%9B%BE/1.%E6%8D%B7%E5%85%8B%E7%86%8A%EF%BC%88%E6%9C%AA%E8%BF%87%E6%BB%A4%EF%BC%89%E9%B2%9C%E5%95%A4%E9%85%92%20%20%201.35l/1.jpg'
-      }]
+      "subItems":[]
     },{
       "id":1,
-      "name":"AAA",
-      "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/nuandong.png',
-      "subItems":[{
-        "id":11,
-        "name":"AAA",
-        "price":100,
-        "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/boluodihai/4.%E6%B3%A2%E7%BD%97%E7%9A%84%E6%B5%B7/24.%E6%B3%A2%E7%BD%97%E5%95%A4%E9%85%92%E8%AF%A6%E6%83%85%E5%9B%BE/1.%E6%8D%B7%E5%85%8B%E7%86%8A%EF%BC%88%E6%9C%AA%E8%BF%87%E6%BB%A4%EF%BC%89%E9%B2%9C%E5%95%A4%E9%85%92%20%20%201.35l/1.jpg'
-      },{
-        "id":12,
-        "name":"AAA",
-        "price":100,
-        "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/boluodihai/4.%E6%B3%A2%E7%BD%97%E7%9A%84%E6%B5%B7/24.%E6%B3%A2%E7%BD%97%E5%95%A4%E9%85%92%E8%AF%A6%E6%83%85%E5%9B%BE/1.%E6%8D%B7%E5%85%8B%E7%86%8A%EF%BC%88%E6%9C%AA%E8%BF%87%E6%BB%A4%EF%BC%89%E9%B2%9C%E5%95%A4%E9%85%92%20%20%201.35l/1.jpg'
-      }]
+      "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/kaimenhong.png',
+      "subItems":[]
+    },{
+      "id":2,
+      "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/nvshenjie.png',
+      "subItems":[]
+    },{
+      "id":3,
+      "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/shipinlihe.png',
+      "subItems":[]
+    },{
+      "id":4,
+      "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/chuanyishuma.png',
+      "subItems":[]
+    },{
+      "id":5,
+      "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/shangwulipin.png',
+      "subItems":[]
+    },{
+      "id":6,
+      "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/qichelipin.png',
+      "subItems":[]
+    },{
+      "id":7,
+      "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/chaopai.png',
+      "subItems":[]
+    },{
+      "id":8,
+      "url":'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/jiayong.png',
+      "subItems":[]
     }]
   },
   onCategoryClick(e) {
@@ -167,14 +173,34 @@ Page({
     let that = this;
     util.request(api.IndexUrl).then(function (res) {
       if (res.errno === 0) {
+        let dt = res.data.goods;
+        
+        for (let i = 0; i < dt.length; i++) {
+          const id = dt[i]['id'];
+          const name = dt[i]['name'];  // Assuming 'name' is part of your data structure
+          const primary_pic_url = dt[i]['primary_pic_url'];
+          const retail_price = dt[i]['retail_price'];
+          const topic = parseInt(dt[i]['topic']);
+    
+          const newobj = {
+            "id": id,
+            "name": name,  // Include 'name' in the new object if it's part of your data
+            "url": primary_pic_url,
+            "price": retail_price
+          };
+    
+          if (!that.data.goods[topic]['subItems']) {
+            that.data.goods[topic]['subItems'] = [];
+          }
+    
+          if (that.data.goods[topic]['subItems'].length < 6) {
+            that.data.goods[topic]['subItems'].push(newobj);
+          }
+        }
+    
+        // Update the goods array in your data object
         that.setData({
-          newGoods: res.data.newGoodsList,
-          hotGoods: res.data.hotGoodsList,
-          topics: res.data.topicList,
-          brand: res.data.brandList,
-          floorGoods: res.data.categoryList,
-          banner: res.data.banner,
-          channel: res.data.channel
+          goods: that.data.goods
         });
       }
     });
