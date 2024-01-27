@@ -25,7 +25,7 @@
       </view>
     </view>
     <view class="category">
-      <view wx:for="{{cagetory}}" wx:key="index" class="item" data-index="{{index}}">
+      <view wx:for="{{category}}" wx:key="index" class="item" data-index="{{index}}">
         <image src="{{item.url}}" />
         <view class="name">{{item.name}}</view>
       </view>

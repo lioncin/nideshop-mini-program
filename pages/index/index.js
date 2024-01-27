@@ -25,7 +25,7 @@ Page({
       { src: 'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/SAD3.png' }
     ],
 
-    cagetory: [{
+    category: [{
       "id":"1","name":"年货节","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon1.png"
     },{
       "id":"2","name":"女神精选","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon2.png"
