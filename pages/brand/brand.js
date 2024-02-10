@@ -5,7 +5,7 @@ Page({
   data: {
     brandList: [],
     page: 1,
-    size: 10,
+    size: 10000,
     totalPages: 1
   },
   onLoad: function (options) {
