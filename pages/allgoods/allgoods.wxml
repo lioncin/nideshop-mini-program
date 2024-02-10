@@ -1,2 +1,22 @@
-<!--pages/allgoods/allgoods.wxml-->
-<text>pages/allgoods/allgoods.wxml</text>
+<view class="container">
+  <view class="box">
+    <view class="top">
+      <input bindconfirm="onEnter" placeholder="请输入商品名词，品牌，型号"/>
+      <text class="button">搜索</text>
+    </view>
+    <view class="options">
+      <view class="option">最新</view>
+      <view class="option">销量</view>
+      <view class="option">价格</view>
+      <view class="option">价格</view>
+      <view class="option">筛选</view>
+    </view>
+    <view class="content">
+      <view class="good" wx:for="{{goodsList}}" wx:for-item="item" wx:key="">
+        <image class="img" src="{{item.primary_pic_url}}" mode=""/>
+        <view class="name">{{ item.name }}</view>
+        <view class="price">{{ item.retail_price}}</view>
+      </view>
+    </view>
+  </view>
+</view>

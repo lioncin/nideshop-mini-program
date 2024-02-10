@@ -52,7 +52,7 @@ module.exports = {
     AddressDetail: ApiRootUrl + 'address/detail',  //收货地址详情
     AddressSave: ApiRootUrl + 'address/save',  //保存收货地址
     AddressDelete: ApiRootUrl + 'address/delete',  //保存收货地址
-	AddressUserInfo: ApiRootUrl + 'address/user',  //保存收货地址
+	  AddressUserInfo: ApiRootUrl + 'address/user',  //保存收货地址
 
     RegionList: ApiRootUrl + 'region/list',  //获取区域列表
 
@@ -63,6 +63,5 @@ module.exports = {
 
     FootprintList: ApiRootUrl + 'footprint/list',  //足迹列表
     FootprintDelete: ApiRootUrl + 'footprint/delete',  //删除足迹
-
-	getPhoneNumber: getPhoneNumber,  //获取手机号
+	  getPhoneNumber: getPhoneNumber,  //获取手机号
 };

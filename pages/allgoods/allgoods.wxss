@@ -1,1 +1,74 @@
-/* pages/allgoods/allgoods.wxss */
+.container{
+  width: 100%;
+  height: 100vh;
+  background: #FFF;
+}
+
+.container .box{
+  width: 100%;
+}
+
+.container .box .top{
+  width: 90%;
+  display: flex;
+  margin: 1% auto;
+}
+
+.container .box .top input{
+  width: 85%;
+  background: #EEe;
+  border-radius: 5px;
+  margin-right: 1%;
+  height: 5vh;
+  padding-left: 3%;
+}
+
+.container .box .top .button{
+  width: 15%;
+  height: 5vh;
+  line-height: 5vh;
+  background: #409eff;
+  color: #FFF;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.container .box .options{
+  width: 100%;
+  display: flex;
+}
+
+.container .box .options .option{
+  width: 20%;
+  text-align: center;
+  margin: 2% 0;
+}
+
+.container .box .content{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container .box .content .good{
+  width: 42%;
+  margin: 1% 4%;
+}
+
+.container .box .content .good .img{
+  width: 100%;
+  height: 25vh;
+}
+
+.container .box .content .good .name{
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container .box .content .good .price{
+  text-align: center;
+}
