@@ -11,7 +11,6 @@
         </scroll-view>
         <scroll-view class="cate" scroll-y="true">
             <navigator url="url" class="banner">
-                <image class="image" src="{{currentCategory.wap_banner_url}}"></image>
                 <view class="txt">{{currentCategory.front_name}}</view>
             </navigator>
             <view class="hd">
@@ -20,11 +19,17 @@
                 <text class="line"></text>
             </view>
             <view class="bd">
-                <navigator url="/pages/category/category?id={{item.id}}" class="item {{(index+1) % 3 == 0 ? 'last' : ''}}" wx:for="{{currentCategory.subCategoryList}}">
-                    <image class="icon" src="{{item.wap_banner_url}}"></image>
+              <view class="dt" wx:for="{{currentCategory.subCategoryList}}">
+                <text class="txt name">{{item.name}}</text>
+                <view class="boxs" wx:if="{{item.subCategoryList && item.subCategoryList.length > 0}}">
+                  <view wx:for="{{item.subCategoryList}}" class="box">
+                    <image class="img" src="{{item.wap_banner_url}}" mode=""/>
                     <text class="txt">{{item.name}}</text>
-                </navigator>
+                  </view>
+                </view>
+              </view>
             </view>
+
         </scroll-view>
     </view>
 </view>
