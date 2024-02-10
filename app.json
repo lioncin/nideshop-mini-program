@@ -32,9 +32,8 @@
     "pages/shopping/address/address",
     "pages/shopping/addressAdd/addressAdd",
     "pages/goods/goods",
-    "pages/topicDetail/topicDetail",
     "pages/allgoods/allgoods",
-    "pages/allgoods"
+    "pages/topicDetail/topicDetail"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -62,7 +61,7 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/allgodds/allgoods",
+        "pagePath": "pages/allgoods/allgoods",
         "iconPath": "static/images/ic_menu_sort_nor.png",
         "selectedIconPath": "static/images/ic_menu_sort_pressed.png",
         "text": "全部商品"
