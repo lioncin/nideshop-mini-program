@@ -32,7 +32,6 @@ Page({
     });
   },
   onLoad: function () {
-
     this.getSearchKeyword();
   },
 
@@ -50,7 +49,6 @@ Page({
   },
 
   inputChange: function (e) {
-
     this.setData({
       keyword: e.detail.value,
       searchStatus: false
