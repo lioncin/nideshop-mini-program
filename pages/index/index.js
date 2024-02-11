@@ -161,31 +161,53 @@ Page({
     }]
   },
   togoods3(e){
+    wx.removeStorageSync('price');
+    wx.removeStorageSync('brand');
+    wx.removeStorageSync('attribute');
+    wx.removeStorageSync('category');
+
     const index = e.currentTarget.dataset.index;
-    console.log(index)
+    wx.setStorageSync('brand', index);
+    wx.switchTab({
+      url: '/pages/allgoods/allgoods'
+    })
   },
   toGoods2(e){
+    wx.removeStorageSync('price');
+    wx.removeStorageSync('brand');
+    wx.removeStorageSync('attribute');
+    wx.removeStorageSync('category');
     const index = e.currentTarget.dataset.index;
-    console.log(index)
+    wx.setStorageSync('price', index);
+    wx.switchTab({
+      url: '/pages/allgoods/allgoods'
+    })
   },
   toGoods(e){
+    wx.removeStorageSync('price');
+    wx.removeStorageSync('brand');
+    wx.removeStorageSync('attribute');
+    wx.removeStorageSync('category');
     const index = e.currentTarget.dataset.index;
+    wx.setStorageSync('attribute', index);
     wx.switchTab({
-      url: '/pages/allgoods/allgoods?attribute='+index
+      url: '/pages/allgoods/allgoods'
     })
   },
   onCategoryClick(e) {
+    wx.removeStorageSync('price');
+    wx.removeStorageSync('brand');
+    wx.removeStorageSync('attribute');
+    wx.removeStorageSync('category');
     const index = e.currentTarget.dataset.index;
-    const selectedCategory = this.data.fenlei[index];
-    
+    wx.setStorageSync('category', index);
     wx.switchTab({
-      url: '/pages/allgoods/allgoods?category='+index
-    })    
+      url: '/pages/allgoods/allgoods'
+    })
   },
 
   onEnter(e){
     var value = e.detail.value;
-    console.log(value)
     wx.navigateTo({  
       url: '/pages/search/search?query=' + value,
     });

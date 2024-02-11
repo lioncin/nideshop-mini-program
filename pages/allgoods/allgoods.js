@@ -12,8 +12,23 @@ Page({
     brand: 0,   //品牌
     goodsList:[]
   },
+
+  // onLoad: function () { //只执行了一次
+  //   const attribute = wx.getStorageSync('attribute');
+  //   const price =     wx.getStorageSync('price')
+  //   const category =  wx.getStorageSync('category')
+  //   const brand =     wx.getStorageSync('brand')
+  //   console.log(category)
+  //   this.getGoodsList()
+  // },
   
-  onLoad: function (options) {
+  
+  onShow: function (options) {
+    const attribute = wx.getStorageSync('attribute');
+    const price =     wx.getStorageSync('price')
+    const category =  wx.getStorageSync('category')
+    const brand =     wx.getStorageSync('brand')
+    console.log(category)
     this.getGoodsList()
   },
 
@@ -26,7 +41,6 @@ Page({
     util.request(api.GoodsList, { brandId: that.data.id, page: that.data.page, size: that.data.size})
     .then(function (res) {
       if (res.errno === 0) {
-        console.log(res.data)
         that.setData({
           goodsList: res.data
         });

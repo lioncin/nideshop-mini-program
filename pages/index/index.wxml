@@ -3,7 +3,7 @@
     <view class="search">
       <input bindconfirm="onEnter" placeholder="请输入商品名词，品牌，型号"/>
       <view class="fenlei">
-        <view wx:for="{{fenlei}}" wx:key="index" class="item" bindtap="onCategoryClick" data-index="{{index}}">
+        <view wx:for="{{fenlei}}" wx:key="index" class="item" bindtap="onCategoryClick" data-index="{{item.id}}">
           {{item.name}}
         </view>
       </view>
