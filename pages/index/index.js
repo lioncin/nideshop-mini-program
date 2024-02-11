@@ -160,12 +160,27 @@ Page({
       "subItems":[]
     }]
   },
+  togoods3(e){
+    const index = e.currentTarget.dataset.index;
+    console.log(index)
+  },
+  toGoods2(e){
+    const index = e.currentTarget.dataset.index;
+    console.log(index)
+  },
+  toGoods(e){
+    const index = e.currentTarget.dataset.index;
+    wx.switchTab({
+      url: '/pages/allgoods/allgoods?attribute='+index
+    })
+  },
   onCategoryClick(e) {
     const index = e.currentTarget.dataset.index;
     const selectedCategory = this.data.fenlei[index];
     
-    // 在这里可以添加点击分类后的逻辑，例如跳转到对应分类的页面或执行其他操作
-    console.log('点击了分类:', selectedCategory);
+    wx.switchTab({
+      url: '/pages/allgoods/allgoods?category='+index
+    })    
   },
 
   onEnter(e){
