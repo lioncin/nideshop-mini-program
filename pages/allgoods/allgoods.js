@@ -8,8 +8,9 @@ Page({
   data:{
     keyword: '', //搜索的关键字，
     category: 0, //分类
-    Attribute: 0, //类型
-    brand: 0,   //品牌
+    attribute: '', //类型
+    price: '',
+    brand: '',   //品牌
     goodsList:[]
   },
 
@@ -28,17 +29,18 @@ Page({
     const price =     wx.getStorageSync('price')
     const category =  wx.getStorageSync('category')
     const brand =     wx.getStorageSync('brand')
-    console.log(category)
+    this.setData({
+      attribute: attribute,
+      brand: brand,
+      price: price,
+      category: category
+    })
     this.getGoodsList()
   },
 
   getGoodsList(){
     let that = this;
-    // util.request(api.GoodsList, { keyword: this.data.keyword, categoryId:this.data.category,Attribute:this.data.Attribute,brandId: this.data.brand,page:1,size:100,order:'price',sort:'asc' }).then(function (res) {
-    //   console.log(res)
-    // })
-
-    util.request(api.GoodsList, { brandId: that.data.id, page: that.data.page, size: that.data.size})
+    util.request(api.GoodsList, { brand: this.data.brand,category: this.data.category })
     .then(function (res) {
       if (res.errno === 0) {
         that.setData({
