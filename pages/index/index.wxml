@@ -38,7 +38,7 @@
         <view class="btn">搜索</view>
       </view>
       <view class="pricebtn">
-        <view wx:for="{{priceOptions}}" wx:key="index" class="item" data-index="{{index}}" bind:tap="toGoods2">
+        <view wx:for="{{priceOptions}}" wx:key="index" class="item" data-index="{{item}}" bind:tap="toPrice">
         <view class="name">{{item}}</view>
       </view>
       </view>

@@ -29,6 +29,7 @@ Page({
     const price =     wx.getStorageSync('price')
     const category =  wx.getStorageSync('category')
     const brand =     wx.getStorageSync('brand')
+    const keyword =   wx.getStorageSync('keyword')
     console.log('category', category)
     console.log('brand', brand)
     console.log('attribute', attribute)
@@ -37,14 +38,15 @@ Page({
       attribute: attribute,
       brand: brand,
       price: price,
-      category: category
+      category: category,
+      keyword: keyword
     })
     this.getGoodsList()
   },
 
   getGoodsList(){
     let that = this;
-    util.request(api.GoodsList, { brand: this.data.brand,category: this.data.category })
+    util.request(api.GoodsList, { brand: this.data.brand,category: this.data.category,attribute:this.data.attribute,price: this.data.price,keyword: this.data.keyword})
     .then(function (res) {
       if (res.errno === 0) {
         that.setData({

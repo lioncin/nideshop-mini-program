@@ -147,7 +147,7 @@ Page({
       url: '/pages/allgoods/allgoods'
     })
   },
-  toGoods2(e){
+  toPrice(e){
     wx.removeStorageSync('price');
     wx.removeStorageSync('brand');
     wx.removeStorageSync('attribute');
@@ -222,7 +222,8 @@ Page({
         that.data.goods[7]['subItems'] = dt['chaopai']
         that.data.goods[8]['subItems'] = dt['jiayong']
         that.setData({
-          brands: dt['brands']
+          brands: dt['brands'],
+          data: that.data.goods
         });
       }
     });
