@@ -83,43 +83,7 @@ Page({
         "id":3,"name":"xxxx","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/TBRAND3.png"
       }
     ],
-    brands:[{
-      "id":1,
-      "name":"中粮",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand7.png","category":1005002
-    },{
-      "id":2,
-      "name":"臻味",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand8.png","category":1005002
-    },{
-      "id":3,
-      "name":"笨笨马",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand9.png","category":1005002
-    },{
-      "id":4,
-      "name":"卓朗",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand4.png","category":1005002
-    },{
-      "id":5,
-      "name":"西屋",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand5.png","category":1005002
-    },{
-      "id":6,
-      "name":"九阳",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand6.png","category":1005002
-    },{
-      "id":7,
-      "name":"戴森",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand3.png","category":1005002
-    },{
-      "id":8,
-      "name":"膳魔师",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand2.png","category":1005002
-    },{
-      "id":9,
-      "name":"飞利浦",
-      "url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/brand1.png","category":1005002
-    }],
+    brands:[],
     searchPrice1:0,
     searchPrice2:0,
     goods:[{
@@ -246,8 +210,10 @@ Page({
         that.data.goods[6]['subItems'] = dt['qiche']
         that.data.goods[7]['subItems'] = dt['chaopai']
         that.data.goods[8]['subItems'] = dt['jiayong']
+        console.log(that.data)
         that.setData({
-          goods: that.data.goods
+          goods: that.data.goods,
+          brands: that.data.brands
         });
       }
     });
