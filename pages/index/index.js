@@ -182,10 +182,18 @@ Page({
   },
 
   onEnter(e){
+    wx.removeStorageSync('price');
+    wx.removeStorageSync('brand');
+    wx.removeStorageSync('attribute');
+    wx.removeStorageSync('category');
     var value = e.detail.value;
-    wx.navigateTo({  
-      url: '/pages/search/search?query=' + value,
-    });
+    wx.setStorageSync('keyword', value);
+    wx.switchTab({
+      url: '/pages/allgoods/allgoods'
+    })
+    // wx.navigateTo({  
+    //   url: '/pages/search/search?query=' + value,
+    // });
   },
   onShareAppMessage: function () {
     return {
@@ -223,7 +231,7 @@ Page({
         that.data.goods[8]['subItems'] = dt['jiayong']
         that.setData({
           brands: dt['brands'],
-          data: that.data.goods
+          goods: that.data.goods
         });
       }
     });
