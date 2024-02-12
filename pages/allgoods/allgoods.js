@@ -29,6 +29,10 @@ Page({
     const price =     wx.getStorageSync('price')
     const category =  wx.getStorageSync('category')
     const brand =     wx.getStorageSync('brand')
+    console.log('category', category)
+    console.log('brand', brand)
+    console.log('attribute', attribute)
+    console.log('price', price)
     this.setData({
       attribute: attribute,
       brand: brand,

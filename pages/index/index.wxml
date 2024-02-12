@@ -25,9 +25,9 @@
       </view>
     </view>
     <view class="category">
-      <view wx:for="{{category}}" wx:key="index" class="item" data-index="{{index}}" bindtap="toGoods">
+      <view wx:for="{{attributes}}" wx:key="item.id" class="item" data-name="{{item.name}}" bind:tap="toAttribute">
           <image src="{{item.url}}" />
-          <view class="name">{{item.name}}</view>
+          <view class="name">{{item.attribute}}</view>
       </view>
     </view>
     <view class="price">
@@ -51,8 +51,8 @@
       </swiper>
     </view>
     <view class="brand">
-      <view wx:for="{{brands}}" wx:key="index" class="item" data-index="{{index}}" bind:tap="togoods3">
-        <image src="{{item.url}}" mode="aspectFit" class="brand-image" />
+      <view wx:for="{{brands}}" wx:key="index" class="item" data-index="{{item.id}}" bind:tap="togoods3">
+        <image src="{{item.pic_url}}" mode="aspectFit" class="brand-image" />
       </view>
     </view>
     <view class="goods">

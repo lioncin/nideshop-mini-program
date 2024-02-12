@@ -49,27 +49,38 @@ Page({
       { src: 'https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/SAD3.png' }
     ],
 
-    category: [{
-      "id":"1","name":"年货节","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon1.png","category":1005002
-    },{
-      "id":"2","name":"女神精选","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon2.png","category":1005002
-    },{
-      "id":"3","name":"开门红","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon3.png","category":1005002
-    },{
-      "id":"4","name":"促销礼赠","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon4.png","category":1005002
-    },{
-      "id":"5","name":"伴手礼盒","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon5.png","category":1005002
-    },{
-      "id":"6","name":"商务套装","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon6.png","category":1005002
-    },{
-      "id":"7","name":"阳光慧采","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon7.png","category":1005002
-    },{
-      "id":"8","name":"代发专区","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon8.png","category":1005002
-    },{
-      "id":"9","name":"暖冬好物","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon9.png","category":1005002
-    },{
-      "id":"10","name":"国铁商城","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon10.png","category":1005002
-    }],
+    attributes: [
+      {
+        "id":"1","name":"年货","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon1.png","attribute":"年货节"
+      },
+      {
+        "id":"2","name":"女神","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon2.png","attribute":"女神精选"
+      },
+      {
+        "id":"3","name":"开门红","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon3.png","attribute":"开门红"
+      },
+      {
+        "id":"4","name":"促销","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon4.png","attribute":"促销礼赠"
+      },
+      {
+        "id":"5","name":"伴手","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon5.png","attribute":"伴手礼盒"
+      },
+      {
+        "id":"6","name":"商务","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon6.png","attribute":"商务套装"
+      },
+      {
+        "id":"7","name":"阳光","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon7.png","attribute":"阳光慧采"
+      },
+      {
+        "id":"8","name":"代发","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon8.png","attribute":"代发专区"
+      },
+      {
+        "id":"9","name":"暖冬","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon9.png","attribute":"暖冬好物"
+      },
+      {
+        "id":"10","name":"国铁","url":"https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/ssicon10.png","attribute":"国铁商城"
+      }
+    ],
 
     priceOptions:['1-20','20-40','40-60','60-80','80-100','100-200','200-500','500-800','800-1000','1000-1500','1500-2000','>2000'],
     brandList:[
@@ -147,13 +158,13 @@ Page({
       url: '/pages/allgoods/allgoods'
     })
   },
-  toGoods(e){
+  toAttribute(e){
     wx.removeStorageSync('price');
     wx.removeStorageSync('brand');
     wx.removeStorageSync('attribute');
     wx.removeStorageSync('category');
-    const index = e.currentTarget.dataset.index;
-    wx.setStorageSync('attribute', index);
+    const name = e.currentTarget.dataset.name;
+    wx.setStorageSync('attribute', name);
     wx.switchTab({
       url: '/pages/allgoods/allgoods'
     })
@@ -210,10 +221,8 @@ Page({
         that.data.goods[6]['subItems'] = dt['qiche']
         that.data.goods[7]['subItems'] = dt['chaopai']
         that.data.goods[8]['subItems'] = dt['jiayong']
-        console.log(that.data)
         that.setData({
-          goods: that.data.goods,
-          brands: that.data.brands
+          brands: dt['brands']
         });
       }
     });
