@@ -22,7 +22,7 @@
               <view class="dt" wx:for="{{currentCategory.subCategoryList}}">
                 <text class="txt name">{{item.name}}</text>
                 <view class="boxs" wx:if="{{item.subCategoryList && item.subCategoryList.length > 0}}">
-                  <view wx:for="{{item.subCategoryList}}" class="box">
+                  <view wx:for="{{item.subCategoryList}}" class="box" data-index="{{item.id}}" bindtap="toGoods">
                     <image class="img" src="{{item.wap_banner_url}}" mode=""/>
                     <text class="txt">{{item.name}}</text>
                   </view>

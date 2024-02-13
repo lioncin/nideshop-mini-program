@@ -1,5 +1,5 @@
-var util = require('../../utils/util.js');
-var api = require('../../config/api.js');
+var util = require("../../utils/util.js");
+var api = require("../../config/api.js");
 
 Page({
   data: {
@@ -9,39 +9,49 @@ Page({
     scrollLeft: 0,
     scrollTop: 0,
     goodsCount: 0,
-    scrollHeight: 0
+    scrollHeight: 0,
   },
   onLoad: function (options) {
     this.getCatalog();
+  },
+  toGoods: function (e) {
+    wx.removeStorageSync("price");
+    wx.removeStorageSync("brand");
+    wx.removeStorageSync("attribute");
+    wx.removeStorageSync("category");
+    wx.removeStorageSync("keyword");
+    const index = e.currentTarget.dataset.index;
+    wx.setStorageSync("category", index);
+    wx.switchTab({
+      url: "/pages/allgoods/allgoods",
+    });
   },
   getCatalog: function () {
     //CatalogList
     let that = this;
     wx.showLoading({
-      title: '加载中...',
+      title: "加载中...",
     });
     util.request(api.CatalogList).then(function (res) {
-        that.setData({
-          navList: res.data.categoryList,
-          currentCategory: res.data.currentCategory
-        });
-        wx.hideLoading();
+      that.setData({
+        navList: res.data.categoryList,
+        currentCategory: res.data.currentCategory,
       });
+      wx.hideLoading();
+    });
     util.request(api.GoodsCount).then(function (res) {
       that.setData({
-        goodsCount: res.data.goodsCount
+        goodsCount: res.data.goodsCount,
       });
     });
-
   },
   getCurrentCategory: function (id) {
     let that = this;
-    util.request(api.CatalogCurrent, { id: id })
-      .then(function (res) {
-        that.setData({
-          currentCategory: res.data.currentCategory
-        });
+    util.request(api.CatalogCurrent, { id: id }).then(function (res) {
+      that.setData({
+        currentCategory: res.data.currentCategory,
       });
+    });
   },
   onReady: function () {
     // 页面渲染完成
@@ -57,7 +67,10 @@ Page({
   },
   getList: function () {
     var that = this;
-    util.request(api.ApiRootUrl + 'api/catalog/' + that.data.currentCategory.cat_id)
+    util
+      .request(
+        api.ApiRootUrl + "api/catalog/" + that.data.currentCategory.cat_id
+      )
       .then(function (res) {
         that.setData({
           categoryList: res.data,
@@ -72,5 +85,5 @@ Page({
     }
 
     this.getCurrentCategory(event.currentTarget.dataset.id);
-  }
-})
+  },
+});
