@@ -13,9 +13,11 @@
     </view>
     <view class="content">
       <view class="good" wx:for="{{goodsList}}" wx:for-item="item" wx:key="">
-        <image class="img" src="{{item.primary_pic_url}}" mode=""/>
-        <view class="name">{{ item.name }}</view>
-        <view class="price">{{ item.retail_price}}</view>
+        <navigator url="../goods/goods?id={{item.id}}" class="item">
+          <image class="img" src="{{item.primary_pic_url}}" mode=""/>
+          <view class="name">{{ item.name }}</view>
+          <view class="price">{{ item.retail_price}}</view>
+        </navigator>
       </view>
     </view>
   </view>

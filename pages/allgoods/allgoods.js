@@ -14,25 +14,12 @@ Page({
     goodsList: [],
   },
 
-  // onLoad: function () { //只执行了一次
-  //   const attribute = wx.getStorageSync('attribute');
-  //   const price =     wx.getStorageSync('price')
-  //   const category =  wx.getStorageSync('category')
-  //   const brand =     wx.getStorageSync('brand')
-  //   console.log(category)
-  //   this.getGoodsList()
-  // },
-
   onShow: function (options) {
     const attribute = wx.getStorageSync("attribute");
     const price = wx.getStorageSync("price");
     const category = wx.getStorageSync("category");
     const brand = wx.getStorageSync("brand");
     const keyword = wx.getStorageSync("keyword");
-    console.log("category", category);
-    console.log("brand", brand);
-    console.log("attribute", attribute);
-    console.log("price", price);
     this.setData({
       attribute: attribute,
       brand: brand,
@@ -64,6 +51,5 @@ Page({
 
   onEnter(e) {
     var value = e.detail.value;
-    console.log(value);
   },
 });

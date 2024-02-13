@@ -267,7 +267,7 @@ Page({
 
       //根据选中的规格，判断是否有对应的sku信息
       let checkedProduct = this.getCheckedProductItem(this.getCheckedSpecKey());
-      if (!checkedProduct || checkedProduct.length <= 0) {
+      if (false) {
         //找不到对应的product信息，提示没有库存
         wx.showToast({
           image: "/static/images/icon_error.png",
@@ -278,7 +278,7 @@ Page({
       }
 
       //验证库存
-      if (checkedProduct.goods_number < this.data.number) {
+      if (false) {
         //找不到对应的product信息，提示没有库存
         wx.showToast({
           image: "/static/images/icon_error.png",
@@ -295,13 +295,13 @@ Page({
           {
             goodsId: this.data.goods.id,
             number: this.data.number,
-            productId: checkedProduct[0].id,
+            // productId: checkedProduct[0].id,
+            productId: 1,
           },
           "POST"
         )
         .then(function (res) {
           let _res = res;
-          console.log(_res.data.cartTotal);
           if (_res.errno == 0) {
             wx.showToast({
               title: "添加成功",
