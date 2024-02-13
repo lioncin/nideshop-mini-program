@@ -243,7 +243,7 @@ Page({
       });
   },
   openCartPage: function () {
-    wx.switchTab({
+    wx.navigateTo({
       url: "/pages/cart/cart",
     });
   },
