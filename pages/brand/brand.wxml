@@ -1,6 +1,6 @@
 <view class="container">
   <view class="brand-list" >
-    <view class="item" wx:for="{{brandList}}" wx:key="id">
+    <view class="item" wx:for="{{brandList}}" wx:key="id" data-index="{{item.id}}" bindtap="toGoodList">
       <view class="img-bg">
         <image class="img" src="{{item.app_list_pic_url}}"></image>
       </view>
