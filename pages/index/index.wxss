@@ -184,7 +184,7 @@
 
 .goods .item .cover image {
   width: 100%;
-  height: 20vh;
+  height: 15vh;
 }
 
 .goods .item .info {
@@ -199,7 +199,7 @@
 }
 .goods .item .info .subitem image {
   width: 100%;
-  height: 20vh;
+  height: 15vh;
 }
 
 .goods .item .info .subitem .price {

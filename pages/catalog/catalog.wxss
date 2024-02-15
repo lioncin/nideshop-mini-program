@@ -30,7 +30,8 @@ page {
 }
 
 .search .icon {
-  background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png) center no-repeat;
+  background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png)
+    center no-repeat;
   background-size: 100%;
   width: 28rpx;
   height: 28rpx;
@@ -157,31 +158,31 @@ page {
   width: 144rpx;
 }
 
-.catalog .bd .dt{
+.catalog .bd .dt {
   margin-top: 10%;
 }
 
-.catalog .bd .dt .boxs{
+.catalog .bd .dt .boxs {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
-.catalog .bd .dt .name{
+.catalog .bd .dt .name {
   padding: 1% 0;
   font-size: 1rem;
 }
-.catalog .bd .dt .boxs .box{
+.catalog .bd .dt .boxs .box {
   width: 33%;
   text-align: center;
 }
 
-.catalog .bd .dt .boxs .img{
+.catalog .bd .dt .boxs .img {
   width: 100%;
-  height: 20vh;
+  height: 15vh;
 }
 
-.catalog .bd .dt .boxs .txt{
+.catalog .bd .dt .boxs .txt {
   font-size: 0.8em;
   text-align: center;
   margin: 0 auto;
