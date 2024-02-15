@@ -64,17 +64,7 @@ Page({
     autoplay: false, // 可设置为true实现自动播放
     interval: 3000,
     circular: true,
-    imageList: [
-      {
-        src: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/SAD1.png",
-      },
-      {
-        src: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/SAD2.png",
-      },
-      {
-        src: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/SAD3.png",
-      },
-    ],
+    imageList: [],
 
     attributes: [
       {
@@ -157,17 +147,17 @@ Page({
       {
         id: 1,
         name: "xxxx",
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/TBRAND1.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202304/62041cc186e44cc38202cddba5aafbd3.jpg",
       },
       {
         id: 2,
         name: "xxxx",
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/TBRAND2.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202311/slide_55e15cc5d8964442abf8cda1d6954013.jpeg",
       },
       {
         id: 3,
         name: "xxxx",
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/TBRAND3.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202305/33b5b782187e45b380f3ff5fe9e03a01.jpg",
       },
     ],
     brands: [],
@@ -181,7 +171,7 @@ Page({
       },
       {
         id: 1,
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/kaimenhong.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202309/8ce219c96bf14f6d8a9da2abec55452b.jpg",
         subItems: [],
       },
       {
@@ -191,17 +181,17 @@ Page({
       },
       {
         id: 3,
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/shipinlihe.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202305/74caff96b83344d3b40f944576b71e1f.jpg",
         subItems: [],
       },
       {
         id: 4,
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/chuanyishuma.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202305/ffbd3cafdf2642648e3fc4e4074ed906.jpg",
         subItems: [],
       },
       {
         id: 5,
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/shangwulipin.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202305/69192b5c02f7449bae3097de9308c0c8.jpg",
         subItems: [],
       },
       {
@@ -284,7 +274,7 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: "NideShop",
+      title: "企福采",
       desc: "微信小程序商城",
       path: "/pages/index/index",
     };
@@ -319,6 +309,7 @@ Page({
         that.setData({
           brands: dt["brands"],
           goods: that.data.goods,
+          imageList: dt['ads']
         });
       }
     });

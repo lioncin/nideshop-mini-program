@@ -51,7 +51,6 @@ Page({
             collectBackImage: that.data.noCollectImage,
           });
         }
-        console.log(res.data.info.goods_desc);
         // WxParse.wxParse("goodsDetail", "html", res.data.info.goods_desc, that);
         that.getGoodsRelated();
       }
@@ -61,7 +60,6 @@ Page({
     let that = this;
     util.request(api.GoodsRelated, { id: that.data.id }).then(function (res) {
       if (res.errno === 0) {
-        console.log(res.data);
         that.setData({
           relatedGoods: res.data.goodsList,
         });
@@ -302,6 +300,7 @@ Page({
         )
         .then(function (res) {
           let _res = res;
+          console.log(_res)
           if (_res.errno == 0) {
             wx.showToast({
               title: "添加成功",

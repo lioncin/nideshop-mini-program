@@ -11,7 +11,7 @@
     <view class="ad">
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}">
         <swiper-item wx:for="{{imageList}}" wx:key="*this">
-          <image src="{{item.src}}" bindtap="handleImageTap"></image>
+          <image src="{{item.image_url}}" bindtap="handleImageTap"></image>
         </swiper-item>
       </swiper>
     </view>
