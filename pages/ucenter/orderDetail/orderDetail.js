@@ -7,6 +7,9 @@ Page({
     orderInfo: {},
     orderGoods: [],
     handleOption: {},
+    orderStatus:0,
+    isShowPayButton:false,
+    orderStatusText:'待付款'
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -47,10 +50,21 @@ Page({
       .then(function (res) {
         if (res.errno === 0) {
           console.log(res.data);
+          let text = ''
+          switch(res.data.orderInfo.order_status){
+            case 0:
+              text = '待付款'
+              break;
+            case 200:
+              text = '待发货'
+              break;
+          }
           that.setData({
             orderInfo: res.data.orderInfo,
             orderGoods: res.data.orderGoods,
             handleOption: res.data.handleOption,
+            orderStatus: res.data.orderInfo.order_status,
+            orderStatusText: text
           });
         }
       });
