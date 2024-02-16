@@ -166,7 +166,7 @@ Page({
     goods: [
       {
         id: 0,
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/nuandong.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202310/81ada9d1d0b4426eb112cc722e85bd4d.jpg",
         subItems: [],
       },
       {
@@ -176,7 +176,7 @@ Page({
       },
       {
         id: 2,
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/nvshenjie.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202401/e3968d84515e45bd869b8b28c2ad80c8.jpg",
         subItems: [],
       },
       {
@@ -196,17 +196,17 @@ Page({
       },
       {
         id: 6,
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/qichelipin.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202311/category_daee3333250e401098d2d5e3be04d0d7.jpg",
         subItems: [],
       },
       {
         id: 7,
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/chaopai.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202305/2b8cc25b56664562a6a5fdc64899c731.jpg",
         subItems: [],
       },
       {
         id: 8,
-        url: "https://qifucai-1256200318.cos.ap-nanjing.myqcloud.com/ADD/jiayong.png",
+        url: "http://cdn.weilf.cn/Contents/site1/202305/e4615345bb1a4cc4bee4ef1fa15d8449.jpg",
         subItems: [],
       },
     ],

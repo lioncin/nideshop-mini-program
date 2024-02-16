@@ -89,5 +89,6 @@
       "desc": "登录以及注册用户使用"
     }
   },
-  "debug": true
+  "debug": true,
+  "lazyCodeLoading": "requiredComponents"
 }

@@ -5,8 +5,31 @@ const app = getApp();
 
 Page({
     data: {
-        userInfo: {},
-        showLoginDialog: false
+      userInfo: {},
+      showLoginDialog: false
+    },
+    getUserProfile: function(e){
+      wx.getUserProfile({
+        desc: '获取您的微信个人信息',
+        success:(res)=>{
+            this.setData({
+              userinfo: res.userInfo,
+              hasUserInfo: true
+            })
+            wx.setStorageSync('userinfo', res.userInfo)
+            wx.showToast({
+              title: '已获取信息',
+            })
+        },
+        fail:function(e){
+            wx.showToast({
+              title: '已取消',
+              icon: "none",
+              duration: 1500,
+              mask: true
+            })
+        }
+      })
     },
     onLoad: function(options) {
         // 页面初始化 options为页面跳转所带来的参数
@@ -39,10 +62,11 @@ Page({
                             if(res.errMsg=='login:ok'){
                                 const code = res.code;
                                 wx.request({
+                                    // url: api.getPhoneNumber,
                                     url: api.getPhoneNumber,
                                     method: 'POST',
                                     data: {
-                                        code: code
+                                      code: code
                                     },
                                     success: function (response) {
                                         const msg = response.data.message;

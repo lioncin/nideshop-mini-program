@@ -1,7 +1,7 @@
-const ApiRootUrl = 'http://127.0.0.1:8360/api/';
-// const ApiRootUrl = 'https://qifucai.asia/';
+// const ApiRootUrl = 'http://127.0.0.1:8360/api/';
+const ApiRootUrl = 'https://api.qifucai.asia/';
 // const getPhoneNumber = 'http://localhost:3000/getPhoneNumber';
-const getPhoneNumber = 'https://jiema.wentb.cn/getPhoneNumber';
+const getPhoneNumber = 'https://jiema.qifucai.asia/';
 
 module.exports = {
     IndexUrl: ApiRootUrl + 'index/index', //首页数据接口
