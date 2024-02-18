@@ -12,8 +12,13 @@ Page({
     price: "",
     brand: "", //品牌
     goodsList: [],
+    originalGoodsList: []
   },
-
+  onInputChange(e) {
+    this.setData({
+      keyword: e.detail.value
+    });
+  },
   onShow: function (options) {
     const attribute = wx.getStorageSync("attribute");
     const price = wx.getStorageSync("price");
@@ -44,12 +49,22 @@ Page({
         if (res.errno === 0) {
           that.setData({
             goodsList: res.data,
+            originalGoodsList: res.data
           });
         }
       });
   },
-
-  onEnter(e) {
-    var value = e.detail.value;
+  onSearch(e) {
+    var value = this.data.keyword;
+    if (!value) {
+      this.setData({
+        goodsList: this.data.originalGoodsList
+      });
+      return;
+    }
+    let filteredGoodsList = this.data.goodsList.filter(item => item.name.includes(value));
+    this.setData({
+      goodsList: filteredGoodsList
+    });
   },
 });

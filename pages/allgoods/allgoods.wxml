@@ -1,8 +1,8 @@
 <view class="container">
   <view class="box">
     <view class="top">
-      <input bindconfirm="onEnter" placeholder="请输入商品名词，品牌，型号"/>
-      <text class="button">搜索</text>
+      <input bindconfirm="onEnter" bindinput="onInputChange" placeholder="请输入商品名词，品牌，型号"/>
+      <text class="button" bindtap="onSearch">搜索</text>
     </view>
     <view class="options">
       <view class="option">最新</view>

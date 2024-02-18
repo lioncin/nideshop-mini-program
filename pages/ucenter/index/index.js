@@ -51,16 +51,18 @@ Page({
     },
 
     onUserInfoClick: function() {
-        let that = this;
+      let that = this;
         wx.showModal({
             title: '授权提示',
             content: '为了提供更好的服务，我们需要获取您的信息。是否同意授权？',
             success: function (res) {
                 if (res.confirm) {
                     wx.login({
-                        success: function (res) {
-                            if(res.errMsg=='login:ok'){
-                                const code = res.code;
+                        success: function (resp) {
+                          console.log(resp)
+                            if(resp.errMsg=='login:ok'){
+                                const code = resp.code;
+                                console.log('code:',code);
                                 wx.request({
                                     // url: api.getPhoneNumber,
                                     url: api.getPhoneNumber,
@@ -111,13 +113,35 @@ Page({
                                     }
                                 });
                             }
+                        },
+                        fail:function(resp){
+                          console.log(resp)
                         }
                     });
                 }
             }
         });
     },
-
+    onUserLogout: function() {
+      wx.showModal({
+        title: '授权提示',
+        content: '是否退出?',
+        success: function(res) {
+          if (res.confirm) {
+            // 清除全局数据中的token和userInfo
+            app.globalData.token = null;
+            app.globalData.userInfo = null;
+            // 清除本地存储中的token和userInfo
+            wx.removeStorageSync('token');
+            wx.removeStorageSync('userInfo');
+            // 跳转至登录页面或者其他指定页面
+            wx.reLaunch({
+              url: '/pages/index/index',
+            });
+          }
+        }
+      });
+    },
     showLoginDialog() {
         this.setData({
             showLoginDialog: true

@@ -4,7 +4,7 @@
         <view class="info">
             <text class='name' bindtap='onUserInfoClick'>{{ userInfo.nickname || '点击登录' }}</text>
         </view>
-        <image bindtap="onUserInfoClick" class='btn' src='/static/images/address_right.png'></image>
+        <image bindtap="onUserLogout" class='btn' src='/static/images/address_right.png'></image>
     </view>
 
     <view class="user-menu">
