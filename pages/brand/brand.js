@@ -6,6 +6,7 @@ Page({
     keyword:'',
     brandList: [],
     originalBrandList:[],
+    letters: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
     page: 1,
     size: 10000,
     totalPages: 1,
@@ -84,5 +85,9 @@ Page({
             brandList: this.data.originalBrandList,
         });
     }
-}
+  },
+  onLetterTap: function(e) {
+    var letter = e.currentTarget.dataset.letter;
+    console.log('Clicked letter:', letter);
+  }
 });

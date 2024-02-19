@@ -127,3 +127,12 @@
 .container .box .content .good .price{
   text-align: center;
 }
+
+.alphabet-list {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+.alphabet-list view {
+  margin-bottom: 10rpx;
+}

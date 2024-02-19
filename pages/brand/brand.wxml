@@ -6,15 +6,18 @@
     </view>
     <view class="content">
       <view class="brand-list" >
-		<view class="item" wx:for="{{brandList}}" wx:key="id" data-index="{{item.id}}" bindtap="toGoodList">
-		  <view class="img-bg">
-			<image class="img" src="{{item.app_list_pic_url}}"></image>
-		  </view>
-		  <view class="txt-box">
-			<text class="name" >{{item.name}}</text>
-		  </view>
-		</view>
-	  </view>
+		    <view class="item" wx:for="{{brandList}}" wx:key="id" data-index="{{item.id}}" bindtap="toGoodList">
+		      <view class="img-bg">
+			      <image class="img" src="{{item.app_list_pic_url}}"></image>
+		      </view>
+		      <view class="txt-box">
+			      <text class="name" >{{item.name}}</text>
+		      </view>
+		    </view>
+	    </view>
+      <view class="alphabet-list">
+	      <view wx:for="{{letters}}" wx:key="letter" data-letter="{{item}}" bindtap="onLetterTap">{{item}}</view>
+      </view>
     </view>
   </view>
 </view>
