@@ -266,7 +266,10 @@ Page({
   saveAddress(){
     console.log(this.data.address)
     let address = this.data.address;
-
+    if (Object.keys(address).length < 10 && address.constructor === Object) {
+      util.showErrorToast('请输入完整的地址信息');
+      return false;
+    } 
     if (address.name == '') {
       util.showErrorToast('请输入姓名');
 
