@@ -1,12 +1,20 @@
 <view class="container">
-  <view class="brand-list" >
-    <view class="item" wx:for="{{brandList}}" wx:key="id" data-index="{{item.id}}" bindtap="toGoodList">
-      <view class="img-bg">
-        <image class="img" src="{{item.app_list_pic_url}}"></image>
-      </view>
-      <view class="txt-box">
-        <text class="name" >{{item.name}}</text>
-      </view>
+  <view class="box">
+    <view class="top">
+      <input bindconfirm="onEnter" bindinput="onInputChange" placeholder="请输入品牌"/>
+      <text class="button" bindtap="onSearch">搜索</text>
+    </view>
+    <view class="content">
+      <view class="brand-list" >
+		<view class="item" wx:for="{{brandList}}" wx:key="id" data-index="{{item.id}}" bindtap="toGoodList">
+		  <view class="img-bg">
+			<image class="img" src="{{item.app_list_pic_url}}"></image>
+		  </view>
+		  <view class="txt-box">
+			<text class="name" >{{item.name}}</text>
+		  </view>
+		</view>
+	  </view>
     </view>
   </view>
 </view>
