@@ -34,7 +34,6 @@ Page({
     });
     this.getGoodsList();
   },
-
   getGoodsList() {
     let that = this;
     util
@@ -47,6 +46,7 @@ Page({
       })
       .then(function (res) {
         if (res.errno === 0) {
+          console.log(res.data)
           that.setData({
             goodsList: res.data,
             originalGoodsList: res.data
@@ -67,4 +67,21 @@ Page({
       goodsList: filteredGoodsList
     });
   },
+  sortSale(){
+    console.log(1)
+  },
+  sortPriceAsc: function() {
+    let filteredGoodsList = [...this.data.goodsList];
+    filteredGoodsList.sort((a, b) => a.retail_price - b.retail_price);
+    this.setData({
+      goodsList: filteredGoodsList
+    });
+  },
+  sortPriceDesc: function() {
+    let filteredGoodsList = [...this.data.goodsList];
+    filteredGoodsList.sort((a, b) => b.retail_price - a.retail_price);
+    this.setData({
+      goodsList: filteredGoodsList
+    });
+  }
 });
