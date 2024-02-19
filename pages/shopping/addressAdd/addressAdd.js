@@ -280,7 +280,11 @@ Page({
       util.showErrorToast('请输入手机号码');
       return false;
     }
-
+    const phoneReg = /^1[3-9]\d{9}$/;
+    if(!phoneReg.test(address.mobile)){
+      util.showErrorToast('输入正确号码');
+      return false;
+    }
 
     if (address.district_id == 0) {
       util.showErrorToast('请输入省市区');

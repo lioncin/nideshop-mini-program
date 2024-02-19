@@ -263,6 +263,10 @@ Page({
       url: '/pages/ucenter/address/address',
     })
   },
+  isValidPhoneNumber(mobile) {
+    const phoneReg = /^1[3-9]\d{9}$/; // 正则表达式匹配中国大陆手机号码
+    return phoneReg.test(mobile);
+  },
   saveAddress(){
     let address = this.data.address;
     if (Object.keys(address).length < 10 && address.constructor === Object) {
@@ -279,6 +283,11 @@ Page({
       return false;
     }
 
+    const phoneReg = /^1[3-9]\d{9}$/;
+    if(!phoneReg.test(address.mobile)){
+      util.showErrorToast('输入正确号码');
+      return false;
+    }
 
     if (address.district_id == 0) {
       util.showErrorToast('请输入省市区');

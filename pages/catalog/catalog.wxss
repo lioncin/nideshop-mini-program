@@ -179,7 +179,7 @@ page {
 
 .catalog .bd .dt .boxs .img {
   width: 100%;
-  height: 15vh;
+  height: 12vh;
 }
 
 .catalog .bd .dt .boxs .txt {

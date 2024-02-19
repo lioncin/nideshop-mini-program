@@ -11,7 +11,7 @@
         </scroll-view>
         <scroll-view class="cate" scroll-y="true">
             <navigator url="url" class="banner">
-                <view class="txt">{{currentCategory.front_name}}</view>
+                <image class="image" src="{{currentCategory.img_url}}"></image>
             </navigator>
             <view class="hd">
                 <text class="line"></text>
