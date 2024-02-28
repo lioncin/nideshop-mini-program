@@ -56,6 +56,13 @@ Page({
       }
     });
   },
+  onShareAppMessage: function () {
+    return {
+      title: "企福采",
+      desc: "微信小程序商城",
+      path: "/pages/goods/goods?id="+this.data.id,
+    };
+  },
   getGoodsRelated: function () {
     let that = this;
     util.request(api.GoodsRelated, { id: that.data.id }).then(function (res) {
@@ -98,7 +105,61 @@ Page({
 
     //重新计算哪些值不可以点击
   },
-
+  handleLongTap: function(e) {
+    var srcRegex = /<img[^>]*\ssrc="([^"]*)"/;
+    var match = this.data.goodsDesc.match(srcRegex);
+    var srcValue = ''
+    if (match) {
+      srcValue = match[1]; // 匹配到的src属性值
+      console.log('第一个<img>标签中的src值:', srcValue);
+    } else {
+      console.log('未找到匹配的src属性值');
+    }
+  
+    wx.showActionSheet({
+      itemList: ['保存图片到相册'],
+      success: function(res) {
+        if (res.tapIndex === 0) { // 用户选择了保存图片
+          wx.downloadFile({
+            url: srcValue, // 图片的网络地址
+            success: function(downloadRes) {
+              if (downloadRes.statusCode === 200) {
+                wx.saveImageToPhotosAlbum({
+                  filePath: downloadRes.tempFilePath,
+                  success: function() {
+                    wx.showToast({
+                      title: '图片已保存至相册',
+                      icon: 'success',
+                      duration: 2000
+                    });
+                  },
+                  fail: function(err) {
+                    console.error('保存图片失败', err);
+                    wx.showModal({
+                      title: '提示',
+                      content: '保存图片到相册失败，请检查您的权限设置',
+                      showCancel: false
+                    });
+                  }
+                });
+              } else {
+                wx.showToast({
+                  title: '下载图片失败',
+                  icon: 'none'
+                });
+              }
+            },
+            fail: function(error) {
+              console.error('下载图片失败', error);
+            }
+          });
+        }
+      },
+      fail: function() {
+        // 处理 action sheet 显示失败的情况
+      }
+    })
+  },
   //获取选中的规格信息
   getCheckedSpecValue: function () {
     let checkedValues = [];

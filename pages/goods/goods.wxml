@@ -53,7 +53,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="detail">
+	<view class="detail" bindlongtap="handleLongTap">
 		<rich-text nodes="{{goodsDesc}}"></rich-text>
 	</view>
 	<view class="related-goods" wx:if="{{relatedGoods.length > 0}}">
